@@ -1,6 +1,6 @@
 import { ArrowRight, Sprout } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import heroImg from "@/assets/hero-farm.jpg";
+import heroImg from "@/assets/cd.jpg";
 const Hero = () => {
   return <section id="inicio" className="relative isolate overflow-hidden">
       <img
@@ -24,12 +24,13 @@ const Hero = () => {
           AgroStore conecta familias campesinas con miles de hogares. Productos frescos, precios justos, y todo lo que el campo necesita en un solo lugar.
         </p>
         <div className="mt-10 flex flex-wrap gap-4">
-          <Button variant="harvest" size="xl" className="group">
-            Ver productos
-            <ArrowRight className="ml-1 h-5 w-5 transition-transform group-hover:translate-x-1" />
+          <Button asChild variant="harvest" size="xl" className="group">
+            <a href="#productos">
+              Ver productos <ArrowRight className="ml-1 h-5 w-5 transition-transform group-hover:translate-x-1" />
+            </a>
           </Button>
-          <Button variant="outlineLight" size="xl">
-            Soy campesino, quiero vender
+          <Button asChild variant="outlineLight" size="xl">
+            <a href="#campesinos">Soy campesino, quiero vender</a>
           </Button>
         </div>
 

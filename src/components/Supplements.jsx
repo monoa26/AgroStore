@@ -2,13 +2,13 @@ import { Sprout, Wrench, Package } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import fert from "@/assets/sup-fertilizante.jpg";
 import sem from "@/assets/sup-semillas.jpg";
-import herr from "@/assets/sup-herramientas.jpg";
+import herr from "@/assets/herramientas.jpg";
 const items = [
-  { img: fert, icon: Package, tag: "Insumos", title: "Fertilizantes org\xE1nicos", desc: "Compost y abonos naturales para suelos vivos." },
-  { img: sem, icon: Sprout, tag: "Semillas", title: "Semillas certificadas", desc: "Variedades nativas y comerciales de alta germinaci\xF3n." },
-  { img: herr, icon: Wrench, tag: "Herramientas", title: "Herramientas de campo", desc: "Equipos resistentes para el trabajo diario." }
+  { img: fert, icon: Package, tag: "Insumos", title: "Fertilizantes org\xE1nicos", desc: "Compost y abonos naturales para suelos vivos.", price: "18.900", unit: "bolsa" },
+  { img: sem, icon: Sprout, tag: "Semillas", title: "Semillas certificadas", desc: "Variedades nativas y comerciales de alta germinaci\xF3n.", price: "12.500", unit: "paquete" },
+  { img: herr, icon: Wrench, tag: "Herramientas", title: "Herramientas de campo", desc: "Equipos resistentes para el trabajo diario.", price: "34.200", unit: "unidad" }
 ];
-const Supplements = () => {
+const Supplements = ({ onAddToCart }) => {
   return <section id="suplementos" className="py-24 bg-card">
       <div className="container">
         <div className="mx-auto max-w-2xl text-center">
@@ -22,7 +22,7 @@ const Supplements = () => {
         </div>
 
         <div className="mt-14 grid gap-6 md:grid-cols-3">
-          {items.map(({ img, icon: Icon, tag, title, desc }) => <article key={title} className="group relative overflow-hidden rounded-3xl shadow-soft transition-all duration-500 hover:shadow-leaf">
+          {items.map(({ img, icon: Icon, tag, title, desc, price, unit }) => <article key={title} className="group relative overflow-hidden rounded-3xl shadow-soft transition-all duration-500 hover:shadow-leaf">
               <img
     src={img}
     alt={title}
@@ -38,7 +38,15 @@ const Supplements = () => {
                 </span>
                 <h3 className="mt-3 font-display text-2xl font-bold">{title}</h3>
                 <p className="mt-1 text-sm text-primary-foreground/85">{desc}</p>
-                <Button variant="harvest" size="sm" className="mt-4">Explorar</Button>
+                <div className="mt-4 flex items-center justify-between gap-4">
+                  <div>
+                    <p className="font-display text-xl font-bold text-primary">${price}</p>
+                    <p className="text-xs text-muted-foreground">/ {unit}</p>
+                  </div>
+                  <Button variant="leaf" size="sm" onClick={() => onAddToCart?.({ title, price, unit })}>
+                    Añadir
+                  </Button>
+                </div>
               </div>
             </article>)}
         </div>

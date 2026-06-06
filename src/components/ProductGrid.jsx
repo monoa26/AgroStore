@@ -1,7 +1,7 @@
 import { MapPin, Star } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import tomates from "@/assets/prod-tomates.jpg";
-import maiz from "@/assets/prod-maiz.jpg";
+import tomates from "@/assets/tomate.jpg";
+import maiz from "@/assets/maiz.jpg";
 import cafe from "@/assets/prod-cafe.jpg";
 import verduras from "@/assets/prod-verduras.jpg";
 const products = [
@@ -10,7 +10,7 @@ const products = [
   { img: cafe, name: "Caf\xE9 de altura", farmer: "Coop. La Esperanza", region: "Huila", price: "28.000", unit: "500g", rating: 5 },
   { img: verduras, name: "Verduras de hoja", farmer: "Do\xF1a Marta", region: "Nari\xF1o", region2: "", price: "6.900", unit: "canasta", rating: 4.7 }
 ];
-const ProductGrid = () => {
+const ProductGrid = ({ onAddToCart }) => {
   return <section id="productos" className="py-24 bg-gradient-soft">
       <div className="container">
         <div className="flex flex-col items-start justify-between gap-6 md:flex-row md:items-end">
@@ -54,7 +54,9 @@ const ProductGrid = () => {
                     <span className="text-2xl font-black text-primary">${p.price}</span>
                     <span className="ml-1 text-sm text-muted-foreground">/ {p.unit}</span>
                   </p>
-                  <Button variant="leaf" size="sm">Añadir</Button>
+                  <Button variant="leaf" size="sm" onClick={() => onAddToCart?.({ title: p.name, price: p.price, unit: p.unit })}>
+                    Añadir
+                  </Button>
                 </div>
               </div>
             </article>)}
