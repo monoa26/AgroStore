@@ -9,7 +9,7 @@ const CTASection = () => {
             <h3 className="mt-4 font-display text-3xl font-bold text-primary">¿Eres campesino?</h3>
             <p className="mt-3 text-muted-foreground">Súmate a la red y vende tu cosecha sin intermediarios. Te acompañamos paso a paso.</p>
             <Button asChild variant="hero" size="lg" className="mt-6">
-              <a href="https://wa.me/573243210278?text=Hola%20AgroStore%2C%20quiero%20vender%20mis%20productos" target="_blank" rel="noreferrer">Quiero vender mis productos</a>
+              <a href="https://wa.me/573243210278?text=Hola%20AgroStore%2C%20quiero%20vender%20mis%20productos" target="_blank" rel="noreferrer">Linea directa</a>
             </Button>
           </div>
           <div className="rounded-3xl bg-gradient-leaf p-10 shadow-leaf text-primary-foreground">

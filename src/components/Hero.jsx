@@ -30,7 +30,7 @@ const Hero = () => {
             </a>
           </Button>
           <Button asChild variant="outlineLight" size="xl">
-            <a href="#campesinos">Soy campesino, quiero vender</a>
+            <a href="#contacto">Soy campesino, quiero vender</a>
           </Button>
         </div>
 
