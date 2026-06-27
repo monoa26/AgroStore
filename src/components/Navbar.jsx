@@ -1,7 +1,9 @@
-import { Leaf, ShoppingBasket } from "lucide-react";
+import { Leaf, ShoppingBasket, Moon, Sun } from "lucide-react";
+import { useTheme } from "next-themes";
 import { Button } from "@/components/ui/button";
 import { Dialog, DialogContent, DialogDescription, DialogTitle, DialogTrigger } from "@/components/ui/dialog";
 const Navbar = ({ cart, onRemoveFromCart }) => {
+  const { theme, setTheme } = useTheme();
   const total = cart.reduce((sum, item) => sum + Number(item.price.replace(/\./g, "")), 0);
   const formattedTotal = total.toLocaleString("es-CO");
   return <header className="sticky top-0 z-40 w-full border-b border-border/60 bg-background/80 backdrop-blur-lg">
@@ -18,7 +20,17 @@ const Navbar = ({ cart, onRemoveFromCart }) => {
           <a href="#campesinos" className="text-sm font-semibold text-foreground/80 transition-colors hover:text-primary">Campesinos</a>
           <a href="#contacto" className="text-sm font-semibold text-foreground/80 transition-colors hover:text-primary">Contacto</a>
         </nav>
-        <Dialog>
+        <div className="flex items-center gap-1">
+          <Button
+            variant="ghost"
+            size="icon"
+            className="rounded-full"
+            onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
+          >
+            <Sun className="h-5 w-5 rotate-0 scale-100 transition-all dark:-rotate-90 dark:scale-0" />
+            <Moon className="absolute h-5 w-5 rotate-90 scale-0 transition-all dark:rotate-0 dark:scale-100" />
+          </Button>
+          <Dialog>
           <DialogTrigger asChild>
             <Button variant="hero" size="sm" className="gap-2">
               <ShoppingBasket className="h-4 w-4" />
@@ -55,6 +67,7 @@ const Navbar = ({ cart, onRemoveFromCart }) => {
             </div>
           </DialogContent>
         </Dialog>
+        </div>
       </div>
     </header>;
 };

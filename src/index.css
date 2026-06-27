@@ -56,6 +56,49 @@
 
     --transition-smooth: cubic-bezier(0.22, 1, 0.36, 1);
   }
+
+  .dark {
+    --background: 140 35% 6%;
+    --foreground: 60 20% 92%;
+
+    --card: 140 30% 10%;
+    --card-foreground: 60 20% 92%;
+
+    --popover: 140 30% 10%;
+    --popover-foreground: 60 20% 92%;
+
+    --primary: 140 45% 38%;
+    --primary-foreground: 60 30% 98%;
+    --primary-glow: 140 55% 50%;
+
+    --secondary: 140 30% 15%;
+    --secondary-foreground: 90 40% 80%;
+
+    --muted: 140 20% 15%;
+    --muted-foreground: 80 15% 60%;
+
+    --accent: 28 65% 45%;
+    --accent-foreground: 60 20% 92%;
+
+    --harvest: 42 80% 45%;
+    --harvest-foreground: 140 35% 10%;
+
+    --destructive: 0 70% 45%;
+    --destructive-foreground: 60 20% 92%;
+
+    --border: 140 20% 20%;
+    --input: 140 20% 22%;
+    --ring: 140 45% 40%;
+
+    --gradient-hero: linear-gradient(135deg, hsl(140 55% 10% / 0.9), hsl(130 50% 15% / 0.75));
+    --gradient-leaf: linear-gradient(135deg, hsl(140 45% 25%), hsl(140 55% 38%));
+    --gradient-harvest: linear-gradient(135deg, hsl(42 80% 45%), hsl(28 65% 40%));
+    --gradient-soft: linear-gradient(180deg, hsl(140 35% 6%), hsl(140 30% 10%));
+
+    --shadow-leaf: 0 20px 40px -15px hsl(140 55% 15% / 0.5);
+    --shadow-soft: 0 8px 24px -8px hsl(140 35% 10% / 0.4);
+    --shadow-glow: 0 0 60px hsl(140 55% 40% / 0.3);
+  }
 }
 
 @layer base {
