@@ -1,9 +1,13 @@
+import { Sprout } from "lucide-react";
 import gumi from "@/assets/gumi.png";
+
 const GumiCorner = () => {
   return <div className="pointer-events-none fixed bottom-4 right-4 z-50 sm:bottom-6 sm:right-6">
       <div className="relative flex items-end gap-2">
         <div className="hidden sm:block animate-wave-in rounded-2xl bg-card/90 px-4 py-2 shadow-soft backdrop-blur-sm border border-border">
-          <p className="text-sm font-semibold text-primary">¡Apoya al campo! 🌱</p>
+          <p className="flex items-center gap-1 text-sm font-semibold text-primary">
+            <Sprout className="h-4 w-4 text-harvest" /> ¡Apoya al campo!
+          </p>
         </div>
         <img
     src={gumi}
@@ -16,7 +20,5 @@ const GumiCorner = () => {
       </div>
     </div>;
 };
-var stdin_default = GumiCorner;
-export {
-  stdin_default as default
-};
+
+export default GumiCorner;

@@ -1,4 +1,5 @@
-import { Leaf } from "lucide-react";
+import { Leaf, Heart } from "lucide-react";
+
 const Footer = () => {
   return <footer className="border-t border-border bg-card">
       <div className="container py-12">
@@ -9,8 +10,8 @@ const Footer = () => {
             </span>
             <span className="font-display text-lg font-bold text-primary">AgroStore</span>
           </div>
-          <p className="text-sm text-muted-foreground">
-            Hecho con 💚 para los campesinos de nuestra tierra.
+          <p className="flex items-center gap-1 text-sm text-muted-foreground">
+            <Heart className="h-4 w-4 text-harvest" /> Hecho para los campesinos de nuestra tierra.
           </p>
           <div className="flex gap-6 text-sm text-muted-foreground">
             <a href="#" className="hover:text-primary">Privacidad</a>
@@ -21,7 +22,5 @@ const Footer = () => {
       </div>
     </footer>;
 };
-var stdin_default = Footer;
-export {
-  stdin_default as default
-};
+
+export default Footer;

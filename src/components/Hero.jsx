@@ -1,6 +1,7 @@
 import { ArrowRight, Sprout } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import heroImg from "@/assets/cd.jpg";
+
 const Hero = () => {
   return <section id="inicio" className="relative isolate overflow-hidden">
       <img
@@ -18,7 +19,7 @@ const Hero = () => {
           Del campo a tu mesa
         </span>
         <h1 className="max-w-3xl font-display text-5xl font-black leading-[1.05] sm:text-6xl md:text-7xl">
-          Compra <em className="not-italic text-harvest">directo</em> al campesino que cultiva tu comida.
+          Compra <span className="text-harvest">directo</span> al campesino que cultiva tu comida.
         </h1>
         <p className="mt-6 max-w-xl text-lg text-primary-foreground/90 md:text-xl">
           AgroStore conecta familias campesinas con miles de hogares. Productos frescos, precios justos, y todo lo que el campo necesita en un solo lugar.
@@ -51,7 +52,5 @@ const Hero = () => {
       </div>
     </section>;
 };
-var stdin_default = Hero;
-export {
-  stdin_default as default
-};
+
+export default Hero;
