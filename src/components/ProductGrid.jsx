@@ -1,4 +1,4 @@
-import { MapPin, Star } from "lucide-react";
+import { Star } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import products from "@/data/products";
 
@@ -19,10 +19,7 @@ const ProductGrid = ({ onAddToCart }) => {
         </div>
 
         <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
-          {products.map((p) => <article
-    key={p.id}
-    className="group overflow-hidden rounded-3xl border border-border bg-card shadow-soft transition-all duration-500 hover:-translate-y-2 hover:shadow-leaf"
-  >
+          {products.map((p) => <article key={p.id} className="group overflow-hidden rounded-3xl border border-border bg-card shadow-soft transition-all duration-500 hover:-translate-y-2 hover:shadow-leaf">
               <div className="relative aspect-square overflow-hidden">
                 <img
     src={p.img}
@@ -35,12 +32,13 @@ const ProductGrid = ({ onAddToCart }) => {
                 <span className="absolute left-3 top-3 inline-flex items-center gap-1 rounded-full bg-card/95 px-3 py-1 text-xs font-bold text-primary shadow-soft">
                   <Star className="h-3 w-3 fill-harvest text-harvest" /> {p.rating}
                 </span>
+                <div className="absolute inset-0 bg-gradient-to-t from-primary/95 via-primary/40 to-transparent opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
+                <div className="absolute inset-x-0 bottom-0 p-5 text-primary-foreground opacity-0 transition-opacity duration-500 group-hover:opacity-100">
+                  <p className="font-display text-base leading-relaxed">{p.desc}</p>
+                </div>
               </div>
               <div className="p-5">
                 <h3 className="font-display text-xl font-bold text-foreground">{p.name}</h3>
-                <p className="mt-1 flex items-center gap-1 text-sm text-muted-foreground">
-                  <MapPin className="h-3.5 w-3.5" /> {p.farmer} · {p.region}
-                </p>
                 <div className="mt-4 flex items-center justify-between">
                   <p className="font-display">
                     <span className="text-2xl font-black text-primary">${p.price.toLocaleString("es-CO")}</span>

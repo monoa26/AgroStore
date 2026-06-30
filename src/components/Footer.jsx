@@ -13,11 +13,7 @@ const Footer = () => {
           <p className="flex items-center gap-1 text-sm text-muted-foreground">
             <Heart className="h-4 w-4 text-harvest" /> Hecho para los campesinos de nuestra tierra.
           </p>
-          <div className="flex gap-6 text-sm text-muted-foreground">
-            <a href="#" className="hover:text-primary">Privacidad</a>
-            <a href="#" className="hover:text-primary">Términos</a>
-            <a href="#" className="hover:text-primary">Soporte</a>
-          </div>
+
         </div>
       </div>
     </footer>;

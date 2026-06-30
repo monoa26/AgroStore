@@ -15,8 +15,9 @@ const Supplements = ({ onAddToCart }) => {
         </div>
 
         <div className="mt-14 grid gap-6 md:grid-cols-3">
-          {items.map(({ id, img, icon: Icon, tag, title, desc, price, unit }) => <article key={id} className="group relative overflow-hidden rounded-3xl shadow-soft transition-all duration-500 hover:shadow-leaf">
-              <img
+          {items.map(({ id, img, icon: Icon, tag, title, desc, price, unit }) => <article key={id} className="group overflow-hidden rounded-3xl border border-border bg-card shadow-soft transition-all duration-500 hover:-translate-y-2 hover:shadow-leaf">
+              <div className="relative overflow-hidden">
+                <img
     src={img}
     alt={title}
     width={800}
@@ -24,18 +25,18 @@ const Supplements = ({ onAddToCart }) => {
     loading="lazy"
     className="h-80 w-full object-cover transition-transform duration-700 group-hover:scale-105"
   />
-              <div className="absolute inset-0 bg-gradient-to-t from-primary/95 via-primary/40 to-transparent" />
-              <div className="absolute inset-x-0 bottom-0 p-6 text-primary-foreground">
-                <span className="inline-flex items-center gap-1.5 rounded-full bg-harvest px-3 py-1 text-xs font-bold text-harvest-foreground">
+                <span className="absolute left-3 top-3 inline-flex items-center gap-1.5 rounded-full bg-harvest px-3 py-1 text-xs font-bold text-harvest-foreground shadow-soft">
                   <Icon className="h-3.5 w-3.5" /> {tag}
                 </span>
-                <h3 className="mt-3 font-display text-2xl font-bold">{title}</h3>
-                <p className="mt-1 text-sm text-primary-foreground/85">{desc}</p>
-                <div className="mt-4 flex items-center justify-between gap-4">
-                  <div>
-                    <p className="font-display text-xl font-bold text-white">${price.toLocaleString("es-CO")}</p>
-                    <p className="text-xs text-muted-foreground">/ {unit}</p>
-                  </div>
+                <div className="absolute inset-0 bg-gradient-to-t from-primary/95 via-primary/40 to-transparent opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
+                <div className="absolute inset-x-0 bottom-0 p-5 text-primary-foreground opacity-0 transition-opacity duration-500 group-hover:opacity-100">
+                  <p className="font-display text-base leading-relaxed">{desc}</p>
+                </div>
+              </div>
+              <div className="p-5">
+                <h3 className="font-display text-xl font-bold text-foreground">{title}</h3>
+                <div className="mt-4 flex items-center justify-between">
+                  <p className="font-display text-xl font-bold text-primary">${price.toLocaleString("es-CO")}</p>
                   <Button variant="leaf" size="sm" onClick={() => onAddToCart?.({ id, title, price, unit })}>
                     Añadir
                   </Button>
