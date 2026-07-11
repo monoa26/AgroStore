@@ -6,11 +6,11 @@ import { Dialog, DialogContent, DialogDescription, DialogTitle, DialogTrigger } 
 import { Sheet, SheetContent, SheetTrigger, SheetTitle, SheetDescription } from "@/components/ui/sheet";
 
 const navLinks = [
-  { href: "#inicio", label: "Inicio" },
-  { href: "#productos", label: "Productos" },
-  { href: "#suplementos", label: "Suplementos" },
-  { href: "#campesinos", label: "Campesinos" },
-  { href: "#contacto", label: "Contacto" },
+  { href: "/#inicio", label: "Inicio" },
+  { href: "/#productos", label: "Productos" },
+  { href: "/#suplementos", label: "Suplementos" },
+  { href: "/#campesinos", label: "Campesinos" },
+  { href: "/#contacto", label: "Contacto" },
 ];
 
 const Navbar = ({ cart, onRemoveFromCart }) => {
@@ -20,14 +20,14 @@ const Navbar = ({ cart, onRemoveFromCart }) => {
   const [sheetOpen, setSheetOpen] = useState(false);
 
   useEffect(() => {
-    const ids = navLinks.map((l) => l.href.slice(1));
+    const ids = navLinks.map((l) => l.href.split("#")[1]).filter(Boolean);
     const observers = [];
     ids.forEach((id) => {
       const el = document.getElementById(id);
       if (!el) return;
       const observer = new IntersectionObserver(
         ([entry]) => {
-          if (entry.isIntersecting) setActive(`#${id}`);
+          if (entry.isIntersecting) setActive(id);
         },
         { rootMargin: "-20% 0px -60% 0px" }
       );
@@ -48,7 +48,7 @@ const Navbar = ({ cart, onRemoveFromCart }) => {
     : "";
   return <header className="sticky top-0 z-40 w-full border-b border-border/60 bg-background/80 backdrop-blur-lg">
       <div className="container flex h-16 items-center justify-between">
-        <a href="#inicio" className="flex items-center gap-2">
+        <a href="/#inicio" className="flex items-center gap-2">
           <span className="flex h-9 w-9 items-center justify-center rounded-xl bg-gradient-leaf shadow-soft">
             <Leaf className="h-5 w-5 text-primary-foreground" />
           </span>
@@ -61,7 +61,7 @@ const Navbar = ({ cart, onRemoveFromCart }) => {
               href={link.href}
               onClick={() => setActive(link.href)}
               className={`text-sm font-semibold transition-colors ${
-                active === link.href
+                active === link.href.split("#")[1]
                   ? "text-primary border-b-2 border-primary pb-0.5"
                   : "text-foreground/80 hover:text-primary"
               }`}
@@ -141,9 +141,9 @@ const Navbar = ({ cart, onRemoveFromCart }) => {
                   <a
                     key={link.href}
                     href={link.href}
-                    onClick={() => setActive(link.href)}
+              onClick={() => setActive(link.href.split("#")[1])}
                     className={`text-base font-semibold transition-colors ${
-                      active === link.href
+                      active === link.href.split("#")[1]
                         ? "text-primary"
                         : "text-foreground/80 hover:text-primary"
                     }`}
