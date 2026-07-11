@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import items from "@/data/supplements";
 
@@ -15,7 +16,8 @@ const Supplements = ({ onAddToCart }) => {
         </div>
 
         <div className="mt-14 grid gap-6 md:grid-cols-3">
-          {items.map(({ id, img, icon: Icon, tag, title, desc, price, unit }) => <article key={id} className="group overflow-hidden rounded-3xl border border-border bg-card shadow-soft transition-all duration-500 hover:-translate-y-2 hover:shadow-leaf">
+          {items.map(({ id, img, icon: Icon, tag, title, desc, price, unit }) => <Link to={`/producto/${id}`} key={id}>
+            <article className="group overflow-hidden rounded-3xl border border-border bg-card shadow-soft transition-all duration-500 hover:-translate-y-2 hover:shadow-leaf">
               <div className="relative overflow-hidden">
                 <img
     src={img}
@@ -37,12 +39,13 @@ const Supplements = ({ onAddToCart }) => {
                 <h3 className="font-display text-xl font-bold text-foreground">{title}</h3>
                 <div className="mt-4 flex items-center justify-between">
                   <p className="font-display text-xl font-bold text-primary">${price.toLocaleString("es-CO")}</p>
-                  <Button variant="leaf" size="sm" onClick={() => onAddToCart?.({ id, title, price, unit })}>
+                  <Button variant="leaf" size="sm" onClick={(e) => { e.preventDefault(); e.stopPropagation(); onAddToCart?.({ id, title, price, unit }); }}>
                     Añadir
                   </Button>
                 </div>
               </div>
-            </article>)}
+            </article>
+          </Link>)}
         </div>
       </div>
     </section>;

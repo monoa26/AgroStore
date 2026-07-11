@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import { Star } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import products from "@/data/products";
@@ -19,7 +20,8 @@ const ProductGrid = ({ onAddToCart }) => {
         </div>
 
         <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
-          {products.map((p) => <article key={p.id} className="group overflow-hidden rounded-3xl border border-border bg-card shadow-soft transition-all duration-500 hover:-translate-y-2 hover:shadow-leaf">
+          {products.map((p) => <Link to={`/producto/${p.id}`} key={p.id}>
+            <article className="group overflow-hidden rounded-3xl border border-border bg-card shadow-soft transition-all duration-500 hover:-translate-y-2 hover:shadow-leaf">
               <div className="relative aspect-square overflow-hidden">
                 <img
     src={p.img}
@@ -44,12 +46,13 @@ const ProductGrid = ({ onAddToCart }) => {
                     <span className="text-2xl font-black text-primary">${p.price.toLocaleString("es-CO")}</span>
                     <span className="ml-1 text-sm text-muted-foreground">/ {p.unit}</span>
                   </p>
-                  <Button variant="leaf" size="sm" onClick={() => onAddToCart?.({ id: p.id, title: p.name, price: p.price, unit: p.unit })}>
+                  <Button variant="leaf" size="sm" onClick={(e) => { e.preventDefault(); e.stopPropagation(); onAddToCart?.({ id: p.id, title: p.name, price: p.price, unit: p.unit }); }}>
                     Añadir
                   </Button>
                 </div>
               </div>
-            </article>)}
+            </article>
+          </Link>)}
         </div>
       </div>
     </section>;

@@ -1,15 +1,26 @@
-import Navbar from "@/components/Navbar";
+import { useEffect } from "react";
+import { useLocation } from "react-router-dom";
 import Hero from "@/components/Hero";
 import ProductGrid from "@/components/ProductGrid";
 import Supplements from "@/components/Supplements";
 import FarmerStory from "@/components/FarmerStory";
 import CTASection from "@/components/CTASection";
-import Footer from "@/components/Footer";
-import GumiCorner from "@/components/GumiCorner";
-import useCart from "@/hooks/useCart";
+import { useCartContext } from "@/context/CartContext";
 import { toast } from "@/hooks/use-toast";
+
 const Index = () => {
-  const { cart, addToCart, removeFromCart } = useCart();
+  const location = useLocation();
+
+  useEffect(() => {
+    const saved = sessionStorage.getItem(`scroll-${location.key}`);
+    if (saved) window.scrollTo(0, parseInt(saved, 10));
+
+    return () => {
+      sessionStorage.setItem(`scroll-${location.key}`, String(window.scrollY));
+    };
+  }, [location.key]);
+
+  const { addToCart } = useCartContext();
   const handleAddToCart = (item) => {
     addToCart(item);
     toast({
@@ -17,20 +28,14 @@ const Index = () => {
       description: `${item.title} agregado por $${item.price} / ${item.unit}`
     });
   };
-  return <div className="min-h-screen bg-background">
-      <Navbar cart={cart} onRemoveFromCart={removeFromCart} />
-      <main>
-        <Hero />
-        <ProductGrid onAddToCart={handleAddToCart} />
-        <Supplements onAddToCart={handleAddToCart} />
-        <FarmerStory />
-        <CTASection />
-      </main>
-      <Footer />
-      <GumiCorner />
-    </div>;
+
+  return <>
+      <Hero />
+      <ProductGrid onAddToCart={handleAddToCart} />
+      <Supplements onAddToCart={handleAddToCart} />
+      <FarmerStory />
+      <CTASection />
+    </>;
 };
-var stdin_default = Index;
-export {
-  stdin_default as default
-};
+
+export default Index;
