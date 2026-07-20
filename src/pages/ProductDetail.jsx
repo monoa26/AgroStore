@@ -120,7 +120,7 @@ const ProductDetail = () => {
           <div className="mt-8">
             <p className="font-display">
               <span className="text-4xl font-black text-primary">
-                ${item.price.toLocaleString("es-CO")}
+                ${item.price.toLocaleString("es-CO")} <span className="text-lg font-bold">COP</span>
               </span>
               <span className="ml-2 text-base text-muted-foreground">
                 / {item.unit}
@@ -159,7 +159,7 @@ const ProductDetail = () => {
           <p className="mt-4 text-sm text-muted-foreground">
             Subtotal:{" "}
             <span className="font-bold text-foreground">
-              ${subtotal.toLocaleString("es-CO")}
+              ${subtotal.toLocaleString("es-CO")} <span className="text-sm font-bold">COP</span>
             </span>
           </p>
 
@@ -201,7 +201,7 @@ const ProductDetail = () => {
                 <div className="p-4">
                   <h3 className="font-display text-lg font-bold text-foreground">{s.name}</h3>
                   <p className="mt-2 font-display text-xl font-black text-primary">
-                    ${s.price.toLocaleString("es-CO")}
+                    ${s.price.toLocaleString("es-CO")} <span className="text-sm font-bold">COP</span>
                     <span className="ml-1 text-sm font-normal text-muted-foreground">/ {s.unit}</span>
                   </p>
                 </div>

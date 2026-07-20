@@ -97,10 +97,10 @@ const Navbar = ({ cart, onRemoveFromCart }) => {
                         <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
                           <div>
                             <p className="font-semibold">{item.title}</p>
-                            <p className="text-sm text-muted-foreground">{item.quantity || 1} × ${item.price.toLocaleString("es-CO")} / {item.unit}</p>
+                            <p className="text-sm text-muted-foreground">{item.quantity || 1} × ${item.price.toLocaleString("es-CO")} <span className="text-sm">COP</span> / {item.unit}</p>
                           </div>
                           <div className="flex items-center gap-3">
-                            <span className="font-bold">${(item.price * (item.quantity || 1)).toLocaleString("es-CO")}</span>
+                            <span className="font-bold">${(item.price * (item.quantity || 1)).toLocaleString("es-CO")} <span className="text-xs font-bold">COP</span></span>
                             <Button variant="outline" size="sm" onClick={() => onRemoveFromCart?.(item.cartItemId)}>
                               Eliminar
                             </Button>
@@ -110,7 +110,7 @@ const Navbar = ({ cart, onRemoveFromCart }) => {
                   <div className="rounded-3xl border border-border bg-card p-4">
                     <div className="flex items-center justify-between">
                       <span className="font-semibold">Total</span>
-                      <span className="font-bold">${formattedTotal}</span>
+                      <span className="font-bold">${formattedTotal} <span className="text-xs font-bold">COP</span></span>
                     </div>
                   </div>
                   <a

@@ -43,7 +43,7 @@ const ProductGrid = ({ onAddToCart }) => {
                 <h3 className="font-display text-xl font-bold text-foreground">{p.name}</h3>
                 <div className="mt-4 flex items-center justify-between">
                   <p className="font-display">
-                    <span className="text-2xl font-black text-primary">${p.price.toLocaleString("es-CO")}</span>
+                    <span className="text-2xl font-black text-primary">${p.price.toLocaleString("es-CO")} <span className="text-base font-bold">COP</span></span>
                     <span className="ml-1 text-sm text-muted-foreground">/ {p.unit}</span>
                   </p>
                   <Button variant="leaf" size="sm" onClick={(e) => { e.preventDefault(); e.stopPropagation(); onAddToCart?.({ id: p.id, title: p.name, price: p.price, unit: p.unit }); }}>

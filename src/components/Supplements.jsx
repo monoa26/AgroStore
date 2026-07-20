@@ -38,7 +38,7 @@ const Supplements = ({ onAddToCart }) => {
               <div className="p-5">
                 <h3 className="font-display text-xl font-bold text-foreground">{title}</h3>
                 <div className="mt-4 flex items-center justify-between">
-                  <p className="font-display text-xl font-bold text-primary">${price.toLocaleString("es-CO")}</p>
+                  <p className="font-display text-xl font-bold text-primary">${price.toLocaleString("es-CO")} <span className="text-base font-bold">COP</span></p>
                   <Button variant="leaf" size="sm" onClick={(e) => { e.preventDefault(); e.stopPropagation(); onAddToCart?.({ id, title, price, unit }); }}>
                     Añadir
                   </Button>
